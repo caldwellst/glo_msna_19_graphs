@@ -28,7 +28,7 @@ s # sunburst for non displaced households with MSNI >= 3
 # Saving the ones I want! In order to save this, then you need to have installed orca on your computer.
 # Follow the instructions to install orca here: https://github.com/plotly/orca#installation
 
-plotly::orca(p, "general_sunburst.pdf")
-plotly::orca(q, "full_sunburst.pdf")
-plotly::orca(r, "severe_msni_sunburst.pdf")
-plotly::orca(r, "non_displaced_sunburst.pdf")
+plotly::orca(p, "graphs/general_sunburst.pdf")
+plotly::orca(q, "graphs/full_sunburst.pdf")
+plotly::orca(r, "graphs/severe_msni_sunburst.pdf")
+plotly::orca(r, "graphs/non_displaced_sunburst.pdf")
