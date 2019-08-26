@@ -2,33 +2,36 @@
 
 devtools::install_github("caldwellst/msni19", ref = "sunburst")
 
-df <- readr::read_csv("msna_data_test.csv")
+df <- readr::read_csv("msna_data.csv")
 
 # Test various sunburst plots
 
-p <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+sunburst_3_plus <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
               wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index")
 
-q <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+sunburst_fsl <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
                       wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index", fsl_wash_branch = T)
 
-r <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+sunburst_4_plus <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
                            wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index", msni_filter = c(4, 5))
 
-s <- msni19::sunburst_msni(dplyr::filter(df, group == "non_displaced"), msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+sunburst_non_displaced <- msni19::sunburst_msni(dplyr::filter(df, group == "non_displaced"), msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
                            wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index")
+
+sunburst_borno <- msni19::sunburst_msni(dplyr::filter(df, state == "NG008"), msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+                                        wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index")
 
 # Viewing the various plots to test
 
-p # general sunburst for all HHs with MSNI >= 3 (default)
-q # sunburst with additional branch for FSL / WASH
-r # sunburst for households with MSNI >= 4
-s # sunburst for non displaced households with MSNI >= 3 
+full_sunburst # general sunburst for all HHs with MSNI >= 3 (default)
+sunburst_fsl # sunburst with additional branch for FSL / WASH
+sunburst_4_plus # sunburst for households with MSNI >= 4
+sunburst_non_displaced # sunburst for non displaced households with MSNI >= 3 
 
 # Saving the ones I want! In order to save this, then you need to have installed orca on your computer.
 # Follow the instructions to install orca here: https://github.com/plotly/orca#installation
 
-plotly::orca(p, "graphs/general_sunburst.pdf")
-plotly::orca(q, "graphs/full_sunburst.pdf")
-plotly::orca(r, "graphs/severe_msni_sunburst.pdf")
-plotly::orca(r, "graphs/non_displaced_sunburst.pdf")
+plotly::orca(full_sunburst, "graphs/general_sunburst.pdf")
+plotly::orca(sunburst_fsl, "graphs/full_sunburst.pdf")
+plotly::orca(sunburst_4_plus, "graphs/severe_msni_sunburst.pdf")
+plotly::orca(sunburst_4_plus, "graphs/non_displaced_sunburst.pdf")
