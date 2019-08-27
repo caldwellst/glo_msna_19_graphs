@@ -1,37 +1,34 @@
 # Test showing how to make sunburst graphs for NGA
+# In order to save the sunburst graphs, then you need to have installed orca on your computer.
+# Follow the instructions to install orca here: https://github.com/plotly/orca#installation
 
 devtools::install_github("caldwellst/msni19", ref = "sunburst")
+if (!require("processx")) install.packages("processx")
 
 df <- readr::read_csv("msna_data.csv")
 
 # Test various sunburst plots
 
-sunburst_3_plus <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
-              wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index")
+msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+                      wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index",
+                      print_plot = T,
+                      plot_name = "general_sunburst",
+                      path = "graphs")
 
-sunburst_fsl <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
-                      wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index", fsl_wash_branch = T)
+msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+                      wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index", fsl_wash_branch = T,
+                      print_plot = T,
+                      plot_name = "full_sunburst",
+                      path = "graphs")
 
-sunburst_4_plus <- msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
-                           wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index", msni_filter = c(4, 5))
+msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+                      wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index", msni_filter = c(4, 5),
+                      print_plot = T,
+                      plot_name = "severe_msni_sunburst",
+                      path = "graphs")
 
-sunburst_non_displaced <- msni19::sunburst_msni(dplyr::filter(df, group == "non_displaced"), msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
-                           wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index")
-
-sunburst_borno <- msni19::sunburst_msni(dplyr::filter(df, state == "NG008"), msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
-                                        wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index")
-
-# Viewing the various plots to test
-
-full_sunburst # general sunburst for all HHs with MSNI >= 3 (default)
-sunburst_fsl # sunburst with additional branch for FSL / WASH
-sunburst_4_plus # sunburst for households with MSNI >= 4
-sunburst_non_displaced # sunburst for non displaced households with MSNI >= 3 
-
-# Saving the ones I want! In order to save this, then you need to have installed orca on your computer.
-# Follow the instructions to install orca here: https://github.com/plotly/orca#installation
-
-plotly::orca(full_sunburst, "graphs/general_sunburst.pdf")
-plotly::orca(sunburst_fsl, "graphs/full_sunburst.pdf")
-plotly::orca(sunburst_4_plus, "graphs/severe_msni_sunburst.pdf")
-plotly::orca(sunburst_4_plus, "graphs/non_displaced_sunburst.pdf")
+msni19::sunburst_msni(dplyr::filter(df, group == "non_displaced"), msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+                      wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index",
+                      print_plot = T,
+                      plot_name = "non_displaced_sunburst",
+                      path = "graphs")

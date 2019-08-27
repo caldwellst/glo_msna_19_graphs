@@ -12,6 +12,7 @@ msni19::severity_bar_chart(df,
                            group_labels = c("IDPs", "Returnees", "Non-displaced"),
                            index = "msni_nga", 
                            index_max = 4,
+                           print_plot = T,
                            plot_name = "msni_bar",
                            path = "graphs")
 
@@ -24,6 +25,7 @@ msni19::severity_bar_chart(df,
                            index = "foodsec_index", 
                            index_max = 4,
                            index_type = "lsg",
+                           print_plot = T,
                            plot_name = "fsl_bar",
                            path = "graphs")
 # Impact graph
@@ -35,5 +37,6 @@ msni19::severity_bar_chart(df,
                            index = "foodsec_index", 
                            index_max = 4,
                            index_type = "lsg",
-                           plot = "impact_bar",
+                           print_plot = T,
+                           plot_name = "impact_bar",
                            path = "graphs")
