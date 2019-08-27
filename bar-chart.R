@@ -6,4 +6,34 @@ df <- readr::read_csv("msna_data.csv")
 
 # MSNI graph
 
-msni19::severity_bar_chart(df, index = "msni_nga", index_max = 5)
+msni19::severity_bar_chart(df,
+                           group = "group",
+                           group_order = c("idp", "returnee", "non_displaced"),
+                           group_labels = c("IDPs", "Returnees", "Non-displaced"),
+                           index = "msni_nga", 
+                           index_max = 4,
+                           plot_name = "msni_bar",
+                           path = "graphs")
+
+# FSL graph
+
+msni19::severity_bar_chart(df,
+                           group = "group",
+                           group_order = c("idp", "returnee", "non_displaced"),
+                           group_labels = c("IDPs", "Returnees", "Non-displaced"),
+                           index = "foodsec_index", 
+                           index_max = 4,
+                           index_type = "lsg",
+                           plot_name = "fsl_bar",
+                           path = "graphs")
+# Impact graph
+
+msni19::severity_bar_chart(df,
+                           group = "group",
+                           group_order = c("idp", "returnee", "non_displaced"),
+                           group_labels = c("IDPs", "Returnees", "Non-displaced"),
+                           index = "foodsec_index", 
+                           index_max = 4,
+                           index_type = "lsg",
+                           plot = "impact_bar",
+                           path = "graphs")
