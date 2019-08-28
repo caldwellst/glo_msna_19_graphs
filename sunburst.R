@@ -2,7 +2,7 @@
 # In order to save the sunburst graphs, then you need to have installed orca on your computer.
 # Follow the instructions to install orca here: https://github.com/plotly/orca#installation
 
-devtools::install_github("caldwellst/msni19", ref = "sunburst")
+remotes::install_github("caldwellst/msni19", ref = "sunburst")
 if (!require("processx")) install.packages("processx")
 
 df <- readr::read_csv("msna_data.csv")

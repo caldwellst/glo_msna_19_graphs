@@ -1,6 +1,6 @@
 # All bar none
 
-devtools::install_github("caldwellst/msni19", ref = "sunburst")
+remotes::install_github("caldwellst/msni19", ref = "sunburst")
 
 df <- readr::read_csv("msna_data.csv")
 
