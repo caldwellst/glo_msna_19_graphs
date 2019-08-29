@@ -1,7 +1,7 @@
 # Venn Diesel
 # Installing up-to-date repositories for MSNI calculations/graphs and survey weighting
 remotes::install_github("caldwellst/msni19")
-remotes::install_github("caldwellst/surveyweights", ref = "dependencies")
+remotes::install_github("ellieallien/surveyweights")
 
 # Loading in data frame and sampling frame
 df <- readr::read_csv("data/msna_data.csv")
