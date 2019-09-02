@@ -18,7 +18,7 @@ weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.f
                                                                       data.stratum.column = "lga")
 # Make that sweet graph of intersections
 
-msni19::index_intersections(df,
+p <- msni19::index_intersections(df,
                             lsg =  c("education_index", "foodsec_index", "protection_index",
                                    "wash_index", "shelter_index", "health_index"),
                             lsg_labels = c("Education",
