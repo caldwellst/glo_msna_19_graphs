@@ -17,6 +17,8 @@ weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.f
                                                                       sampling.frame.stratum.column = "LGA_pcode",
                                                                       data.stratum.column = "lga")
 # Make that sweet graph of intersections
+# Due to issues with printing the intersections plot, I recommend you try finding the scales
+# that work best for you.
 
 p <- msni19::index_intersections(df,
                             lsg =  c("education_index", "foodsec_index", "protection_index",
@@ -28,6 +30,13 @@ p <- msni19::index_intersections(df,
                                            "Protection",
                                            "WASH"),
                             weighting_function = weighting_function,
-                            print_plot = T,
-                            plot_name = "intersection",
-                            path = "graphs")
+                            print_plot = F)
+
+# We print by using the base options for R
+pdf("graphs/intersection.pdf", width = 5, height = 4)
+p
+dev.off()
+
+# There is an error in the UpSetR package that means the last y axis label can be cut off
+# The solution for now will need to be manually adjusting in the InDesign or PDF
+# Or you can zoom in so close that number 0 disappears completely if it happens to you
