@@ -30,6 +30,9 @@ p <- msni19::index_intersections(df,
                                            "Protection",
                                            "WASH"),
                             weighting_function = weighting_function,
+                            exclude_unique = F,
+                            mutually_exclusive_sets = F,
+                            round_to_1_percent = T,
                             print_plot = F)
 
 # We print by using the base options for R

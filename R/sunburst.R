@@ -51,3 +51,15 @@ msni19::sunburst_msni(dplyr::filter(df, group == "non_displaced"), msni = "msni_
                       print_plot = T,
                       plot_name = "non_displaced_sunburst",
                       path = "graphs")
+
+
+# Do it in French!
+msni19::sunburst_msni(df, msni = "msni_nga", fsl_lsg = "foodsec_index", health_lsg = "health_index", protection_lsg = "protection_index", shelter_lsg = "shelter_index",
+                      wash_lsg = "wash_index", capacity_gaps = "coping_gap_index", impact = "impact_index", 
+                      fsl_wash_branch = T,
+                      weighting_function = weighting_function,
+                      print_plot = T,
+                      plot_name = "french_sunburst",
+                      path = "graphs",
+                      language = "fr")
+

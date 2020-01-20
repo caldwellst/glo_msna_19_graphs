@@ -28,3 +28,17 @@ msni19::severity_lines(df,
                        print_plot = T,
                        plot_name = "severity_lines",
                        path = "graphs")
+
+
+# Making graph of % of households by # of indices that are >= 3
+# But in French!
+msni19::severity_lines(df,
+                       lsg,
+                       group = "group",
+                       group_order = c("idp", "returnee", "non_displaced"),
+                       group_labels = c("French IDPs", "French returnees", "French Non-displaced"),
+                       weighting_function = weighting_function,
+                       print_plot = T,
+                       plot_name = "french_severity_lines",
+                       path = "graphs",
+                       language = "fr")

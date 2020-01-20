@@ -28,6 +28,23 @@ msni19::index_chart(df,
                     plot_name = "msni_bar",
                     path = "graphs")
 
+
+# French MSNI graph
+
+msni19::index_chart(df,
+                    group = "group",
+                    group_order = c("idp", "returnee", "non_displaced"),
+                    group_labels = c("IDPs", "Returnees", "Non-displaced"),
+                    index = "msni_nga", 
+                    index_max = 4,
+                    weighting_function = weighting_function,
+                    bar_graph = T,
+                    print_plot = T,
+                    plot_name = "french_msni_bar",
+                    path = "graphs",
+                    language = "fr")
+
+
 # I can also make that same MSNI graph, but using a line graph. This isn't recommend, but
 # can be done if the number of population groups makes the stacked bar chart impossible.
 
